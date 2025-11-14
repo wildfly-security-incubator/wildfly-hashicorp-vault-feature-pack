@@ -23,7 +23,7 @@
     </default-packages>
 
     <package-schemas>
-        <group name="org.wildfly" />
+        <group name="org.wildfly.security" />
     </package-schemas>
 
     <plugins>

@@ -30,6 +30,16 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>hashicorp-vault-subsystem</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.wildfly.security.hashicorp.vault</groupId>
+            <artifactId>wildfly-elytron-hashicorp-vault</artifactId>
+            <version>0.1.1-Alpha</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.jopenlibs</groupId>
+            <artifactId>vault-java-driver</artifactId>
+            <version>${version.vault.java.driver}</version>
+        </dependency>
     </dependencies>
 
     <build>

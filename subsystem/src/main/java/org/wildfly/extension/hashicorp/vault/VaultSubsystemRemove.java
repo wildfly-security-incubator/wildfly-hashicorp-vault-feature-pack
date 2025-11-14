@@ -9,6 +9,9 @@ import org.jboss.as.controller.OperationContext;
 import org.jboss.as.controller.OperationFailedException;
 import org.jboss.dmr.ModelNode;
 
+/**
+ * Remove handler for the HashiCorp Vault subsystem.
+ */
 public class VaultSubsystemRemove extends AbstractRemoveStepHandler {
     
     public static final VaultSubsystemRemove INSTANCE = new VaultSubsystemRemove();

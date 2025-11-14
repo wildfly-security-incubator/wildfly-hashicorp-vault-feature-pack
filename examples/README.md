@@ -14,7 +14,7 @@ mvn clean install
 ```
 #### 2. Provision a WildFly server with the feature pack. Download the latest version of the galleon tools from https://github.com/wildfly/galleon/releases . The example below assumes you have unzipped galleon in a ~/Downloads/galleon directory:
 ```bash
-~Downloads/galleon/bin/galleon.sh install org.wildfly:wildfly-hashicorp-vault-feature-pack:0.1.0.Alpha-SNAPSHOT --layers=hashicorp-vault  --dir=wildfly
+~Downloads/galleon/bin/galleon.sh install org.wildfly:wildfly-hashicorp-vault-feature-pack:1.0.0.Alpha1-SNAPSHOT --layers=hashicorp-vault  --dir=wildfly
 ```
 
 #### 3. Start WildFly

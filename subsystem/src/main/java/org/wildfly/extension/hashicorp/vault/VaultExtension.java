@@ -6,9 +6,12 @@ package org.wildfly.extension.hashicorp.vault;
 
 import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.SUBSYSTEM;
 
+import javax.xml.namespace.QName;
+
 import org.jboss.as.controller.ExtensionContext;
 import org.jboss.as.controller.ModelVersion;
 import org.jboss.as.controller.PathElement;
+import org.jboss.as.controller.ResourceRegistration;
 import org.jboss.as.controller.SubsystemModel;
 import org.jboss.as.controller.SubsystemRegistration;
 import org.jboss.as.controller.SubsystemSchema;
@@ -26,7 +29,7 @@ import org.wildfly.subsystem.SubsystemPersistence;
  * WildFly extension that provides HashiCorp Vault Support
  *
  */
-public final class VaultExtension extends SubsystemExtension<VaultExtension.VaultSubsystemSchema> {
+public final class VaultExtension implements org.jboss.as.controller.Extension {
 
     /**
      * The name of our subsystem within the model.
@@ -39,8 +42,6 @@ public final class VaultExtension extends SubsystemExtension<VaultExtension.Vaul
     //private static final String RESOURCE_NAME = VaultExtension.class.getPackage().getName() + ".LocalDescriptions";
     
     public VaultExtension() {
-        super(SubsystemConfiguration.of(SUBSYSTEM_NAME, VaultSubsystemModel.CURRENT, VaultSubsystemRegistrar::new),
-                SubsystemPersistence.of(VaultSubsystemSchema.CURRENT));
     }
 
     /**
@@ -68,46 +69,20 @@ public final class VaultExtension extends SubsystemExtension<VaultExtension.Vaul
     public Stability getStability() {
         return FEATURE_STABILITY;
     }
-    
-    public static PathElement createPath(String name) {
-        return PathElement.pathElement(name);
-    }
 
+    @Override
     public void initialize(ExtensionContext context) {
         final SubsystemRegistration subsystem = context.registerSubsystem(SUBSYSTEM_NAME, CURRENT_MODEL_VERSION);
         subsystem.registerSubsystemModel(new VaultSubsystemDefinition());
-        subsystem.registerXMLElementWriter(new VaultSubsystemParser_1_0());
+        subsystem.registerXMLElementWriter(VaultSubsystemParser_1_0.INSTANCE);
     }
-
-    public enum VaultSubsystemSchema implements SubsystemResourceXMLSchema<VaultSubsystemSchema> {
-
-        VERSION_1_0_0(1, 0, FEATURE_STABILITY);
-
-        static final VaultSubsystemSchema CURRENT = VERSION_1_0_0;
-
-        private final VersionedNamespace<IntVersion, VaultSubsystemSchema> namespace;
-        private final ResourceXMLParticleFactory factory = ResourceXMLParticleFactory.newInstance(this);
-
-        VaultSubsystemSchema(int major, int minor, Stability stability) {
-            this(major, minor, stability, false);
-        }
-        VaultSubsystemSchema(int major, int minor, Stability stability, boolean legacy) {
-            this.namespace = SubsystemSchema.createSubsystemURN(SUBSYSTEM_NAME, stability, new IntVersion(major, minor));
-        }
-
-        @Override
-        public VersionedNamespace<IntVersion, VaultSubsystemSchema> getNamespace() {
-            return this.namespace;
-        }
-
-        @Override
-        public Stability getStability() {
-           return this.getNamespace().getStability();
-        }
-
-        @Override
-        public SubsystemResourceRegistrationXMLElement getSubsystemXMLElement() {
-            return this.factory.subsystemElement(VaultSubsystemRegistrar.REGISTRATION).build();
-        }
+    
+    @Override
+    public void initializeParsers(org.jboss.as.controller.parsing.ExtensionParsingContext context) {
+        context.setSubsystemXmlMapping(SUBSYSTEM_NAME, VaultSubsystemParser_1_0.NAMESPACE, VaultSubsystemParser_1_0.INSTANCE);
+    }
+    
+    public static PathElement createPath(String name) {
+        return PathElement.pathElement(name);
     }
 }
