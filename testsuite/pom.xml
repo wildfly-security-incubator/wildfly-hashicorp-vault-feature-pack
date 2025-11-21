@@ -8,13 +8,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.wildfly</groupId>
+        <groupId>org.wildfly.security</groupId>
         <artifactId>hashicorp-vault-parent</artifactId>
         <!--
         Maintain separation between the artifact id and the version to help prevent
         merge conflicts between commits changing the GA and those changing the V.
         -->
-        <version>0.1.0.Alpha-SNAPSHOT</version>
+        <version>1.0.0.Alpha1-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -39,7 +39,7 @@
         <hashicorp-vault.feature.pack.artifactId>wildfly-hashicorp-vault-feature-pack</hashicorp-vault.feature.pack.artifactId>
         <hashicorp-vault.feature.pack.version>${project.version}</hashicorp-vault.feature.pack.version>
 
-        <base.feature.pack.groupId>org.wildfly</base.feature.pack.groupId>
+        <base.feature.pack.groupId>org.wildfly.security</base.feature.pack.groupId>
         <base.feature.pack.artifactId>wildfly-ee-galleon-pack</base.feature.pack.artifactId>
         <base.feature.pack.version>${version.org.wildfly}</base.feature.pack.version>
         <!-- For some reason this needs to be true if base.feature.pack.artifactId=wildfly-galleon-pack

@@ -33,6 +33,9 @@ public final class VaultSubsystemRegistrar implements SubsystemResourceDefinitio
         ResourceDescriptor descriptor = ResourceDescriptor.builder(RESOLVER)
                 .build();
         ManagementResourceRegistrar.of(descriptor).register(registration);
+
+        registration.registerSubModel(new CredentialStoreDefinition());
+        
         return registration;
     }
 

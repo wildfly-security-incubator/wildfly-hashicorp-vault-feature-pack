@@ -5,24 +5,24 @@
 package org.wildfly.extension.hashicorp.vault;
 
 import static org.wildfly.extension.hashicorp.vault.VaultExtension.SUBSYSTEM_NAME;
-import static org.wildfly.extension.hashicorp.vault.VaultExtension.VaultSubsystemSchema.CURRENT;
 
-import java.util.EnumSet;
+import org.jboss.as.subsystem.test.AbstractSubsystemBaseTest;
 
-import org.jboss.as.subsystem.test.AbstractSubsystemSchemaTest;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import java.io.IOException;
 
-@RunWith(Parameterized.class)
-public class SubsystemTestCase extends AbstractSubsystemSchemaTest<VaultExtension.VaultSubsystemSchema> {
+/**
+ * Base test case for the HashiCorp Vault subsystem.
+ *
+ */
+public class SubsystemTestCase extends AbstractSubsystemBaseTest {
 
-    @Parameterized.Parameters
-    public static Iterable<VaultExtension.VaultSubsystemSchema> parameters() {
-        return EnumSet.allOf(VaultExtension.VaultSubsystemSchema.class);
+    public SubsystemTestCase() {
+        super(SUBSYSTEM_NAME, new VaultExtension());
     }
 
-    public SubsystemTestCase(VaultExtension.VaultSubsystemSchema schema) {
-        super(SUBSYSTEM_NAME, new VaultExtension(), schema, CURRENT);
+    @Override
+    protected String getSubsystemXml() throws IOException {
+        return readResource("hashicorp-vault-experimental-1.0.xml");
     }
 
 }

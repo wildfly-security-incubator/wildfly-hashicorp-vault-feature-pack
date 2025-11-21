@@ -11,6 +11,8 @@
     </props>
     <dependencies>
         <layer name="elytron"/>
+        <layer name="management"/>
+        <layer name="core-tools"/>
     </dependencies>
     <feature-group name="hashicorp-vault"/>
 </layer-spec>

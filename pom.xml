@@ -13,13 +13,13 @@
         <version>50</version>
     </parent>
 
-    <groupId>org.wildfly</groupId>
+    <groupId>org.wildfly.security</groupId>
     <artifactId>hashicorp-vault-parent</artifactId>
     <!--
     Maintain separation between the artifact id and the version to help prevent
     merge conflicts between commits changing the GA and those changing the V.
     -->
-    <version>0.1.0.Alpha-SNAPSHOT</version>
+    <version>1.0.0.Alpha1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>WildFly HashiCorp Vault -- Parent</name>
@@ -136,6 +136,12 @@
                 <version>${version.org.wildfly.galleon-plugins}</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/org.wildfly.security.hashicorp.vault/wildfly-elytron-hashicorp-vault -->
+            <dependency>
+                <groupId>org.wildfly.security.hashicorp.vault</groupId>
+                <artifactId>wildfly-elytron-hashicorp-vault</artifactId>
+                <version>0.1.1-Alpha</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
