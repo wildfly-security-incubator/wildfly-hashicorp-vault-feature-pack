@@ -247,13 +247,19 @@
             <url>https://repository.jboss.org/nexus/repository/public-jboss/</url>
             <layout>default</layout>
         </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+            <id>jboss-public-repository-group-old</id>
+            <name>JBoss Public Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
+        </repository>
     </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>public-jboss-plugins</id>
-            <name>Public JBoss Repository Group</name>
-            <url>https://repository.jboss.org/nexus/repository/public-jboss/</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
