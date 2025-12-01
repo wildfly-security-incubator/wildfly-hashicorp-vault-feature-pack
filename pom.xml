@@ -13,7 +13,7 @@
         <version>50</version>
     </parent>
 
-    <groupId>org.wildfly.security</groupId>
+    <groupId>org.wildfly.security.hashicorp.vault</groupId>
     <artifactId>hashicorp-vault-parent</artifactId>
     <!--
     Maintain separation between the artifact id and the version to help prevent

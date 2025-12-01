@@ -23,7 +23,7 @@
     </default-packages>
 
     <package-schemas>
-        <group name="org.wildfly.security" />
+        <group name="org.wildfly.security.hashicorp.vault" />
     </package-schemas>
 
     <plugins>
