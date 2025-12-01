@@ -11,7 +11,7 @@
     </properties>
 
     <resources>
-        <artifact name="${org.wildfly.security:hashicorp-vault-subsystem}"/>
+        <artifact name="${org.wildfly.security.hashicorp.vault:hashicorp-vault-subsystem}"/>
     </resources>
 
     <dependencies>
