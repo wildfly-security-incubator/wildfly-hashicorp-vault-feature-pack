@@ -7,6 +7,7 @@ Prior to releasing you should ensure you have your own GPG signing key set up, p
 ## Prepare the release
 
 Execute:
+
     mvn clean install
     mvn release:prepare
 
@@ -18,7 +19,7 @@ Execute:
 
 ## Complete the release
 
-If no issues are reported complete the release.
+The above pushed the release to the wildfly-staging repository. If no issues are reported in nexus wildfly-staging repository, then complete the release.
 
 Move the component to the `wildfly-security` repository:
 
